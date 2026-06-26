@@ -1,0 +1,141 @@
+<section class="relative pt-28 pb-16 overflow-hidden min-h-[92vh] flex items-center">
+    <div class="hero-blob w-[600px] h-[500px] bg-[rgba(108,99,255,0.18)] top-0 right-0 float" style="animation-delay:0s"></div>
+    <div class="hero-blob w-[400px] h-[400px] bg-[rgba(34,211,238,0.09)] bottom-10 left-0" style=""></div>
+ 
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-7">
+          <div class="fade-up flex items-center gap-2">
+            <div class="glow-dot"></div>
+            <span class="section-label" style="color:#22D3EE">The #1 Tech Community Platform</span>
+          </div>
+          <div class="fade-up-2">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+              <span class="text-white">Read. Learn.</span><br>
+              <span class="font-serif italic" style="background:linear-gradient(135deg,#6C63FF,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Grow Together.</span>
+            </h1>
+          </div>
+          <p class="fade-up-3 text-slate-400 text-lg leading-relaxed max-w-lg">
+            Discover amazing articles about AI, HTML, React, Angular and more. Written by developers for developers. Level up your skills every single day.
+          </p>
+          <div class="fade-up-3 flex flex-wrap gap-3 pt-1">
+            <a href="#featured" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-2xl text-sm flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              Explore Posts
+            </a>
+            <a  routerLink="/about" class="btn-outline text-slate-300 font-semibold px-7 py-3.5 rounded-2xl text-sm">Learn More</a>
+          </div>
+          <div class="fade-up-3 flex gap-8 pt-2">
+            <div>
+              <div class="text-2xl font-bold text-white">12K+</div>
+              <div class="text-xs text-slate-500 mt-0.5">Articles</div>
+            </div>
+            <div class="w-px bg-[rgba(108,99,255,0.2)]"></div>
+            <div>
+              <div class="text-2xl font-bold text-white">48K+</div>
+              <div class="text-xs text-slate-500 mt-0.5">Developers</div>
+            </div>
+            <div class="w-px bg-[rgba(108,99,255,0.2)]"></div>
+            <div>
+              <div class="text-2xl font-bold text-white">200+</div>
+              <div class="text-xs text-slate-500 mt-0.5">Topics</div>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#6C63FF]/20 to-[#22D3EE]/20 blur-3xl rounded-full"></div>
+          <img src="images/homeHero.png" alt="Developer Reading Article" class="relative w-full max-w-lg mx-auto rounded-3xl border border-white/10 shadow-2xl shadow-[#6C63FF]/20 hover:scale-105 transition duration-500">    
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="featured" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center justify-between mb-12">
+        <div>
+          <div class="section-label mb-2" style="color:#22D3EE">Latest & Greatest</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Featured Posts</h2>
+        </div>
+        <a routerLink="/all-posts" class="btn-outline text-slate-400 text-sm font-medium px-5 py-2.5 rounded-xl hidden sm:block">View All →</a>
+      </div>
+ 
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  @for(post of postService.posts().slice(0,3); track post.id){
+
+    <article
+      appPostHover
+      class="card rounded-3xl overflow-hidden group border border-slate-700 cursor-pointer"
+      (click)="openPost(post.id)"
+      [routerLink]="['/post', post.id]"
+    >
+
+      <div class="relative h-48 overflow-hidden">
+
+        <img
+          [src]="post.image || 'images/default-post.jpg'"
+          alt=""
+          class="w-full h-full object-cover opacity-80"
+        >
+
+        <span
+          [appCategoryColor]="post.category"
+          class="badge absolute top-4 left-4 tag"
+        >
+          {{post.category}}
+        </span>
+
+      </div>
+
+      <div class="p-6 space-y-3">
+
+        <h3 class="text-white font-bold text-lg leading-snug">
+          {{post.title}}
+        </h3>
+
+        <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">
+          {{post.content}}
+        </p>
+
+        <div
+          class="flex items-center justify-between pt-3 border-t border-[rgba(108,99,255,0.1)]"
+        >
+
+          <div class="flex items-center gap-2.5">
+
+           <img *ngIf="post.user?.avatar; else initials"[src]="post.user.avatar" class="w-8 h-8 rounded-lg border border-[rgba(108,99,255,0.3)]" alt="">
+                <ng-template #initials>
+                  <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-white text-xs font-bold">
+                    {{ post.user?.firstName?.charAt(0) }}{{ post.user?.lastName?.charAt(0) }}
+                  </div>
+                </ng-template>
+
+            <div>
+
+              <div class="text-white text-xs font-semibold">
+                {{post.user?.firstName}}
+                {{post.user?.lastName}}
+              </div>
+
+              <div class="text-slate-600 text-[10px]">
+                {{post.publishedAt | date:'MMM d, y'}}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  }
+
+</div>
+    </div>
+  </section>

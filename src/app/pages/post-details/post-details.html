@@ -1,0 +1,74 @@
+<section *ngIf="post() as p" class="pt-28 pb-20 px-4">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-start">
+
+    <!-- Image -->
+    <div class="lg:w-1/2">
+
+      <img
+        *ngIf="p.image"
+        [src]="p.image"
+        [alt]="p.title"
+        class="w-full h-[450px] object-cover rounded-3xl border border-slate-700 mb-8">
+
+      <div
+        *ngIf="!p.image"
+        class="h-[450px] rounded-3xl border border-slate-700 bg-slate-800 flex items-center justify-center text-8xl opacity-20">
+        📰
+      </div>
+
+    </div>
+
+    <!-- Content -->
+    <div class="lg:w-1/2">
+
+      <span
+        [appCategoryColor]="p.category"
+        class="inline-block px-4 py-1 rounded-full border text-cyan-400 border-cyan-500/30 mb-4">
+
+        {{ p.category }}
+
+      </span>
+
+      <h1 class="text-4xl font-bold text-white mb-6">
+        {{ p.title }}
+      </h1>
+
+      <div class="flex items-center gap-3 mb-8">
+
+        <img
+          *ngIf="p.user?.avatar"
+          [src]="p.user.avatar"
+          class="w-12 h-12 rounded-xl"
+          alt="Author">
+
+        <div
+          *ngIf="!p.user?.avatar"
+          class="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center text-white font-bold">
+
+          {{ p.user?.firstName?.charAt(0) }}{{ p.user?.lastName?.charAt(0) }}
+
+        </div>
+
+        <div>
+          <div class="text-white font-semibold">
+            {{ p.user?.firstName }} {{ p.user?.lastName }}
+          </div>
+
+          <div class="text-slate-400 text-sm">
+            {{ p.publishedAt | date:'MMMM d, y' }}
+          </div>
+        </div>
+
+      </div>
+
+      <div
+        class="bg-slate-800 border border-slate-700 rounded-3xl p-8 text-slate-300 leading-8 whitespace-pre-line">
+
+        {{ p.content }}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,45 @@
+.section-label {
+    color: var(--accent-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.glow-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+    animation: blink 2s ease-in-out infinite;
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card {
+    background: linear-gradient(145deg, rgba(108, 99, 255, 0.15), rgba(34, 211, 238, 0.05));
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: 24px;
+    padding: 28px;
+}
+
+.value-card {
+    border-radius: 20px;
+    padding: 24px;
+    background: linear-gradient(145deg, rgba(18, 21, 56, 0.7), rgba(13, 16, 48, 0.8));
+    border: 1px solid rgba(108, 99, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.value-card:hover {
+    border-color: rgba(108, 99, 255, 0.35);
+    background: linear-gradient(145deg, rgba(18, 21, 56, 0.9), rgba(13, 16, 48, 0.95));
+}

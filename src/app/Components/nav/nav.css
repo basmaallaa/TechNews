@@ -1,0 +1,51 @@
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #22d3ee;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #22d3ee;
+}
+
+.active-link {
+  color: #22d3ee;
+}
+
+.active-link::after {
+  width: 100%;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #6C63FF, #22D3EE);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 30px rgba(86, 185, 246, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1.5px solid rgba(108, 99, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #22D3EE;
+}

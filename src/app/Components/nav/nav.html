@@ -1,0 +1,81 @@
+<nav class="fixed top-0 w-full bg-[#080c18]/90 backdrop-blur-xl border-b border-white/10 z-50">
+
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <div class="font-mono font-bold text-xl">
+      TECH<span class="text-cyan-400">NEWS</span>
+    </div>
+
+    <button class="md:hidden text-slate-300 text-2xl cursor-pointer" (click)="toggleMenu()">
+      ☰
+    </button>
+
+    <div class="hidden md:flex gap-8 items-center">
+      <a routerLink="/home" routerLinkActive="active-link" class="nav-link">Home</a>
+      <a routerLink="/about" routerLinkActive="active-link" class="nav-link">About</a>
+      <a routerLink="/all-posts" routerLinkActive="active-link" class="nav-link">Posts</a>
+      <a routerLink="/profile" routerLinkActive="active-link" class="nav-link">Profile</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-3">
+
+      @if (!isLoggedIn) {
+        <a routerLink="/login" class="text-slate-300 text-sm">Log In</a>
+        <a routerLink="/register" class="btn-primary px-4 py-2 rounded-xl">Register</a>
+      }
+
+      @if (isLoggedIn) {
+        <span class="text-slate-300 text-sm">
+          Welcome, <span class="text-cyan-400 font-semibold">{{ user?.firstName }}</span>
+        </span>
+
+        <button
+    (click)="logout()"
+    class="text-sm px-4 py-1.5 rounded-xl
+           border border-red-500/30
+           text-red-400
+           hover:bg-red-500/10
+           hover:border-red-500/50
+           transition-all duration-300">
+
+    Log Out
+  </button>
+      }
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    *ngIf="menuOpen"
+    class="md:hidden bg-[#080c18] border-t border-white/10 px-6 py-4 space-y-4"
+  >
+
+    <a routerLink="/home" (click)="closeMenu()" class="block text-slate-300 hover:text-cyan-400">Home</a>
+    <a routerLink="/about" (click)="closeMenu()" class="block text-slate-300 hover:text-cyan-400">About</a>
+    <a routerLink="/all-posts" (click)="closeMenu()" class="block text-slate-300 hover:text-cyan-400">Posts</a>
+    <a routerLink="/profile" (click)="closeMenu()" class="block text-slate-300 hover:text-cyan-400">Profile</a>
+
+    <hr class="border-white/10" />
+
+    @if (!isLoggedIn) {
+      <a routerLink="/login" (click)="closeMenu()" class="block text-slate-300 hover:text-cyan-400">Log In</a>
+      <a routerLink="/register" (click)="closeMenu()" class="block text-cyan-400 font-semibold">Register</a>
+    }
+
+    @if (isLoggedIn) {
+      <div class="text-slate-300 text-sm">
+        Welcome, <span class="text-cyan-400 font-semibold">{{ user?.firstName }}</span>
+      </div>
+
+      <button
+        (click)="logout(); closeMenu()"
+        class="text-red-400 cursor-pointer hover:underline"
+      >
+        Log Out
+      </button>
+    }
+
+  </div>
+
+</nav>

@@ -1,0 +1,34 @@
+<div class="min-h-screen flex items-center justify-center bg-[#0A0F1E] px-6 relative overflow-hidden">
+
+  <!-- Background glow -->
+  <div class="absolute w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full top-10 left-10"></div>
+  <div class="absolute w-[400px] h-[400px] bg-cyan-400/10 blur-[120px] rounded-full bottom-10 right-10"></div>
+
+  <!-- Content -->
+  <div class="text-center z-10 max-w-md">
+
+    <!-- 404 -->
+    <h1 class="text-[120px] font-bold text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400 bg-clip-text leading-none">
+      404
+    </h1>
+
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold text-white mt-4">
+      Page not found
+    </h2>
+
+    <!-- Description -->
+    <p class="text-slate-400 mt-2 text-sm">
+      The page you're looking for doesn’t exist or has been moved.
+    </p>
+
+    <!-- Button -->
+    <a
+      routerLink="/home"
+      class="inline-block mt-6 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-400 text-white font-medium hover:opacity-90 transition"
+    >
+      Go Home
+    </a>
+
+  </div>
+</div>
