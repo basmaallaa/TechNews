@@ -2,6 +2,10 @@
 
 TechNews is a modern news web application built with **Angular 21** using **Standalone Components**. The application allows users to browse the latest news, create posts, and manage their profile with authentication and route protection.
 
+<p align="center">
+  <img src="./public/images/screenShot.jpg" width="900" alt="Home">
+</p>
+
 ---
 
 ## ✨ Features
