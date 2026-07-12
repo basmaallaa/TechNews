@@ -6,7 +6,7 @@ import { Post } from '../Models/post';
   providedIn: 'root',
 })
 export class PostService {
-    private apiUrl = 'http://localhost:3000/posts';
+    private apiUrl = 'https://json-server-api-production-7c07.up.railway.app/posts';
       
     posts = signal<any>([]);
 
